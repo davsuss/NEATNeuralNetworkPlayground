@@ -3,19 +3,12 @@ __author__ = 'DavidS'
 
 
 class NodeGene:
-    def __init__(self, innovationId, bias , response, activationType , nodeType ):
-        self.innovationId = innovationId
+    def __init__(self, id, bias , response, activationType , nodeType ):
+        self.id = id
         self.bias = bias
         self.response = response
         self.activationType = activationType
         self.nodeType = nodeType
-
-        id = property(lambda self: self._id)
-        type = property(lambda self: self._type)
-        bias = property(lambda self: self._bias)
-        response = property(lambda self: self._response)
-        activation_type = property(lambda self: self._activation_type)
-
 
     def Mutate_Bias(self):
         self.bias = 1

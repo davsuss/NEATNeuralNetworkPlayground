@@ -1,11 +1,12 @@
 __author__ = 'DavidS'
 
 class ConnectionGene:
-    def __init__(self, weight, inNode , outNode):
+    def __init__(self, weight, inNode , outNode, enabled, innovationNumber):
         self.weight = weight
         self.inNode = inNode
         self.outNode = outNode
-
+        self.enabled = enabled
+        self.innovationNumber = innovationNumber
 
 
     def MutateWeight(self):

@@ -8,8 +8,4 @@ class Network:
      self.outputs = OutputNodes
      self.connections = Connections
 
-    self.Nodes = Nodes
-    self.Connections = Connections
-
-
 
