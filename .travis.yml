@@ -2,9 +2,10 @@ language: python
 python:
   - "2.7"
 install:
-  pip install coveralls
-  pip install nosetests
+ -  pip install coveralls
+ -  pip install nosetests
+ -  pip install -r requirements.txt
 script:
-  nosetests --with-coverage Tests
+  - nosetests --with-coverage Tests
 after_success:
-  coveralls
+  - coveralls
