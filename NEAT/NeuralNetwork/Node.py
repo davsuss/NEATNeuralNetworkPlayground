@@ -4,7 +4,7 @@ from Config import Config
 
 class Node:
 
-    def __init__(self, bias,layerId):
+    def __init__(self, bias):
 
         self.hasFired = False
         self.output = 1
@@ -12,6 +12,7 @@ class Node:
 
     def addInputLink(self, link):
         self.inputs.append(link)
+
 
     def hasFired(self):
         return self.hasFired
@@ -26,16 +27,17 @@ class Node:
             return self.fire()
     def fire(self):
         ##Calculate Output#
+        self.hasFired = True
         result = 0
-
         for i in self.inputs:
             result += i.incoming()
+        self.output = self.activationFunction(result)
 
-        return self.activationFunction(result)
+        return self.output
 
     def activationFunction(self, value):
         if Config.Activation == "THRESHOLD":
-            if value > Config.ACTIVATION_THRESHOLD:
+            if value > Config.ActivationThreshold:
                 return 1
             else:
                 return 0

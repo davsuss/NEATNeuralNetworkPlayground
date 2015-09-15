@@ -23,4 +23,6 @@ class Config:
 
 
     Activation = "THRESHOLD"
-    ACTIVATION_THRESHOLD = .5
+    ActivationThreshold = .4
+
+    GlobalInnovationNumber = 1

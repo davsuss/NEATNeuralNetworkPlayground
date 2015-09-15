@@ -1,6 +1,7 @@
 __author__ = 'DavidS'
 import random
-from Config import Config
+from NeuralNetwork import Config
+from BasicNeat import ConnectionGene
 ## from Paper (K. O. Stanley and R. Miikkulainen)
 ##Each genome includes a list of connection
 ##genes, each of which refers to two node genes being connected ##
@@ -15,11 +16,11 @@ class Genome:
         self.connectionGenes = connectionGenes
         self.nodeGenes = nodeGenes
 
-    def __init__(self,inputs,outputs):
-
-
     def getConnections(self):
         return self.connectionGenes
+
+    def getNodes(self):
+        return self.nodeGenes
 
     def getDistance(self,other):
         ## Used to determine when the next generation starts ##
@@ -70,6 +71,25 @@ class Genome:
         con.split()
 
     def addConnectionMutate(self):
+        NonSensorIndex = 0
+        InputNodeIndex = 0
+        OutputNodeIndex = 0
 
+        i = 0
+        for node in self.nodeGenes:
+            if node.Type() != "SENSOR":
+                NonSensorIndex = i
+                break
+            i += 1
+        if NonSensorIndex > 1:
+            InputNode = self.nodeGenes[random.randrange(0,NonSensorIndex - 1)]
+        else:
+            InputNode = self.nodeGenes[0]
+
+
+        OutputNode = self.nodeGenes[random.randrange(NonSensorIndex,len(self.nodeGenes))]
+        result = ConnectionGene.ConnectionGene(1,InputNode,OutputNode,1,1)
+        self.connectionGenes.append(result)
 
     def MergeGenome(self,genome):
+        pass

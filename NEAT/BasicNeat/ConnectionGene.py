@@ -1,10 +1,10 @@
 __author__ = 'DavidS'
 
 class ConnectionGene:
-    def __init__(self, weight, inNode , outNode, enabled, innovationNumber):
+    def __init__(self, weight, inNodeint , outNodeint, enabled, innovationNumber):
         self.weight = weight
-        self.inNode = inNode
-        self.outNode = outNode
+        self.inNode = inNodeint
+        self.outNode = outNodeint
         self.enabled = enabled
         self.innovationNumber = innovationNumber
 
@@ -17,3 +17,10 @@ class ConnectionGene:
         ##splitting##
 
 
+    def getInNode(self):
+        return self.inNode
+    def getOutNode(self):
+        return self.outNode
+
+    def __str__(self):
+        return "InNode: (%s) OutNode (%s) InnovNumber (%d)" % (self.inNode,self.outNode,self.innovationNumber)

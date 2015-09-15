@@ -23,5 +23,4 @@ class Connection(GenericConnection):
         self.output.addInputLink(self)
 
     def incoming(self):
-        return self.input.getOutput()*self.weight
-
+      return self.input.getOutput()*self.weight
