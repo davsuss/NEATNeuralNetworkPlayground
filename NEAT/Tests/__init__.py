@@ -1,2 +1,2 @@
-from NetworkTests import NetworkTests
-from GenomeTests import GenomeTests
+from .NetworkTests import NetworkTests
+from .GenomeTests import GenomeTests

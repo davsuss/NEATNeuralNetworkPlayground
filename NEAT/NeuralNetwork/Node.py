@@ -1,6 +1,6 @@
 __author__ = 'DavidS'
 
-from Config import Config
+from NeuralNetwork import Config
 
 class Node:
 
@@ -36,8 +36,8 @@ class Node:
         return self.output
 
     def activationFunction(self, value):
-        if Config.Activation == "THRESHOLD":
-            if value > Config.ActivationThreshold:
+        if Config.Config.Activation == "THRESHOLD":
+            if value > Config.Config.ActivationThreshold:
                 return 1
             else:
                 return 0

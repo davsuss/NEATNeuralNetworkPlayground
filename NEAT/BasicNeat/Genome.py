@@ -88,7 +88,7 @@ class Genome:
 
 
         OutputNode = self.nodeGenes[random.randrange(NonSensorIndex,len(self.nodeGenes))]
-        result = ConnectionGene.ConnectionGene(1,InputNode,OutputNode,1,1)
+        result = ConnectionGene(1,InputNode,OutputNode,1,1)
         self.connectionGenes.append(result)
 
     def MergeGenome(self,genome):

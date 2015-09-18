@@ -25,7 +25,6 @@ class GenomeTests(unittest.TestCase):
         genes.addConnectionMutate()
 
         connections = genes.getConnections()
-        print connections[0]
         assert(len(connections) == 1)
         assert(connections[0].getInNode() == Sensor)
         assert(connections[0].getOutNode() == Hidden)
@@ -33,6 +32,8 @@ class GenomeTests(unittest.TestCase):
 
     def testMutateAddNode(self):
         pass
+
+
 
 if __name__ == '__main__':
     unittest.main()

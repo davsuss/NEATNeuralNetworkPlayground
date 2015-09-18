@@ -2,7 +2,13 @@ import unittest
 from NeuralNetwork import Node
 from NeuralNetwork import Connection
 from NeuralNetwork import ConstantConnection
+from NeuralNetwork import Network
 from NeuralNetwork import Config
+from BasicNeat import ConnectionGene
+from BasicNeat import NodeGene
+from BasicNeat import Genome
+
+
 class NetworkTests(unittest.TestCase):
 
   def testSingleNodeNetwork(self):
@@ -42,6 +48,24 @@ class NetworkTests(unittest.TestCase):
     outputNode.reset()
 
     assert(outputNode.getOutput() == 0)
+
+
+  def testCreateNetwork(self):
+        ##Generating Phenotype
+        inputNode = NodeGene(0,1,1,"SENSOR")
+        outputNode = NodeGene(1,1,1,"OUTPUT")
+        conn = ConnectionGene(1,0,1,True,1)
+
+        connections = [conn]
+        nodes = [inputNode,outputNode]
+
+
+        genes = Genome(connections,nodes)
+
+
+        network = Network(genes)
+
+        assert(network.fire([1]) == [1])
 
 if __name__ == '__main__':
     unittest.main()
