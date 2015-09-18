@@ -5,6 +5,6 @@ install:
  -  pip install coveralls
  -  pip install nose
 script:
-  - nosetests --with-coverage NEAT/Tests
+  - nosetests --with-coverage -w NEAT/Tests
 after_success:
   - coveralls
