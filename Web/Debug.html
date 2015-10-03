@@ -15,9 +15,14 @@
 <script src="https://code.jquery.com/qunit/qunit-1.19.0.js"> </script>
 
 <script src="Test/testSuite.js"> </script>
+<script src="NEAT/Tests.js"></script>
+
 
 <script>
 var suite = new testSuite("QTestResults");
+var NeuralNetworkTest = new NeuralNetworkUnitTests();
+NeuralNetworkTest.Test();
+
 </script>
 
 
