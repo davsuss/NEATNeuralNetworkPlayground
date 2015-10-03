@@ -1,0 +1,43 @@
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest Jquery -->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"> </script>
+
+<!-- Qunit -->
+<script src="https://code.jquery.com/qunit/qunit-1.19.0.js"> </script>
+
+<script src="Test/testSuite.js"> </script>
+
+<script>
+var suite = new testSuite("QTestResults");
+</script>
+
+
+<body>
+<div class="jumbotron">
+  <h1>Jumbotron heading</h1>
+
+  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+</div>
+
+<div class="container">
+  <h2>Test Cases</h2>
+     <p>Unit Test Cases:</p>
+     <table class="table" id="QTestResults">
+        <thead>
+          <th>TestName</th> <th>TestResult</th> <th>Output</th>
+        </thead>
+        <tbody>
+        </tbody>
+     </table>
+
+</div>
+</body>
