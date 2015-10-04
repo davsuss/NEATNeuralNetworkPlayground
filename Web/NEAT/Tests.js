@@ -1,7 +1,4 @@
 
-
-
-
 var NeuralNetworkUnitTests = function() {
 
 };
@@ -14,10 +11,9 @@ NeuralNetworkUnitTests.prototype.Test = function(){
 NeuralNetworkUnitTests.prototype.testInit = function(assert){
   var CallbackCalled = false;
   var testVarible = new NeuralNetwork();
-  testVarible.OnUpdate(function(){CallbackCalled = true;});
-  testVarible.Init(2,3);
+  testVarible.Init(2,3,function(){CallbackCalled = true;});
 
-  assert.Equal(testVarible._GetInputs().length, 2);
-  assert.Equal(testVarible._GetOutputs().length, 3);
-  assert.isTrue(CallbackCalled);
+  assert.equal(testVarible._GetInputs().length, 2);
+  assert.equal(testVarible._GetOutputs().length, 3);
+  assert.equal(CallbackCalled, true);
 };

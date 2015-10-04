@@ -20,7 +20,7 @@ var testSuite = function (tableResultId){
 
 testSuite.prototype.AddResult = function(result){
     //  console.log(this.tableId);
-      var row = $("<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>".format(result.name,result.failed,result.runtime));
+      var row = $("<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>".format(result.name,Boolean(result.failed),result.runtime));
 
      $("{0} > tbody".format('#' + this.tableId)).append(row);
 

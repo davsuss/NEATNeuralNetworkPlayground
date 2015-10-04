@@ -22,17 +22,17 @@ NeuralNetwork.prototype._GetOutputs = function() {
   return this.outputs;
 };
 
-NeuralNetwork.prototype.Init = function(numOfInputs,numOfOutputs){
+NeuralNetwork.prototype.Init = function(numOfInputs,numOfOutputs,callBack){
 
   for(i = 0 ;i  < numOfInputs; i++)
   {
-      this.inputs.append(new Neuron(nil, true));
+      this.inputs.push(new Neuron([], true));
   }
   for(i = 0 ;i  < numOfOutputs; i++)
   {
-      this.outputs.append(new Neuron([], false));
+      this.outputs.push(new Neuron([], false));
   }
-
+  this.callBack = callBack;
   this.OnUpdate();
 };
 
@@ -59,21 +59,21 @@ NeuralNetwork.prototype.Reset = function(){
   });
 };
 
-NeuralNetwork.prototype.OnUpdate = function(callBack){
+NeuralNetwork.prototype.OnUpdate = function(){
   var Nodes = [];
   var Connections = [];
 
   this.inputs.forEach(function(element,index,array){
-    Nodes.append({id: 0, output: 1, type:"Input"});
+    Nodes.push({id: 0, output: 1, type:"Input"});
   });
   this.hiddens.forEach(function(element,index,array){
-    Nodes.append({id: 0, output: 1, type:"Hidden"});
+    Nodes.push({id: 0, output: 1, type:"Hidden"});
   });
   this.outputs.forEach(function(element,index,array){
-    Nodes.append({id: 0, output: 1, type:"Output"});
+    Nodes.push({id: 0, output: 1, type:"Output"});
   });
 
-  callBack({NetworkNodes: Nodes, NetworkConnections: Connections});
+  this.callBack({NetworkNodes: Nodes, NetworkConnections: Connections});
 
 };
 
@@ -81,7 +81,7 @@ NeuralNetwork.prototype.OnUpdate = function(callBack){
 var Neuron = function(inputCons, isInput) {
 this.Fired = false;
 this.Output = 0;
-this.inputs = inputsCons;
+this.inputs = inputCons;
 };
 Neuron.prototype.setOutput = function(output){
   this.Output = 1;
