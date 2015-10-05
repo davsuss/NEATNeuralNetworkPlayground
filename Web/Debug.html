@@ -13,21 +13,30 @@
 
 <!-- Qunit -->
 <script src="https://code.jquery.com/qunit/qunit-1.19.0.js"> </script>
-
+<script src="http://d3js.org/d3.v3.js"></script>
 <script src="NEAT/NeuralNetwork.js"></script>
 <script src="Test/testSuite.js"> </script>
 <script src="NEAT/Tests.js"></script>
+<script src="Graph/Graph.js"></script>
+
+<style>
+
+.node {
+fill: #ccc;
+stroke: #fff;
+stroke-width: 2px;
+}
+
+.link {
+stroke: #777;
+stroke-width: 2px;
+}
 
 
-<script>
-var suite = new testSuite("QTestResults");
-var NeuralNetworkTest = new NeuralNetworkUnitTests();
-NeuralNetworkTest.Test();
-
-</script>
-
+</style>
 
 <body>
+
 <div class="jumbotron">
   <h1>Jumbotron heading</h1>
 
@@ -47,10 +56,17 @@ NeuralNetworkTest.Test();
 
 </div>
 
+<div class="Graph">
 
-<div id="NetworkGraph">
-  
 </div>
 
+<script>
+var suite = new testSuite("QTestResults");
+var NeuralNetworkTest = new NeuralNetworkUnitTests();
+NeuralNetworkTest.Test();
+var g = new Graph(500,500);
+g.Generate([]);
+
+</script>
 
 </body>
