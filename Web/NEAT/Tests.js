@@ -40,17 +40,29 @@ NeuralNetworkUnitTests.prototype.testFire = function(assert){
 
   /*Working on outputing a simple Network*/
 
-  testVarible.Init(2,3,function()
+  testVarible.Init(2,3,function(details)
   {
       if(testOutput)
       {
-          //Verify Outptus
+          //Verify Updates
+          assert.equal(details.NetworkNodes.length,2);
+          assert.equal(details.NetworkNodes[0],{id:0,output:1,Type:"Input"});
+          assert.equal(details.NetworkNodes[1],{id:1,output:1,Type:"Output"});
+
+          assert.equal(details.NetworkConnections.length,1);
+          assert.equal(details.NetworkConnections[0],{inputId:1,outputId:1});
       }
   });
+  testOutput = true;
+  testVarible.fire([1]);
+
+  var resultInputs = testVarible._GetInputs();
+  var resultOutputs = testVarible._GetOutputs();
+  var resultConnections = testVarible._GetConnections();
+  testOutput = false;
 
 
 
 
 
-
-}
+};

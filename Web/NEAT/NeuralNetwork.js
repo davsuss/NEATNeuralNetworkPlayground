@@ -24,7 +24,11 @@ NeuralNetwork.prototype._GetOutputs = function() {
 
 NeuralNetwork.prototype._GetConnections = function() {
   return this.connections.slice();
-}
+};
+
+NeuralNetwork.prototype._AddConnection = function(inputId,outputId){
+  this.connections.append(new Synapse(inputId,outputId));
+};
 
 NeuralNetwork.prototype.Init = function(numOfInputs,numOfOutputs,callBack){
 var i = 0;
@@ -42,11 +46,11 @@ var i = 0;
 
 NeuralNetwork.prototype.Fire = function(inputs){
 
-var results = []
+var results = [];
   this.Reset();
   this.inputs.forEach(function(element,index,array)
   {
-      element.setOutput(inputs[index])
+      element.setOutput(inputs[index]);
   });
 
   this.outputs.forEach(function(element,index,array){
@@ -56,10 +60,6 @@ var results = []
 this.OnUpdate();
 
 };
-
-NeuralNetwork.prototype.GetOutputs = function() {
-
-}
 
 NeuralNetwork.prototype.Reset = function(){
   this.inputs.forEach(function(element,index,array){
@@ -109,10 +109,10 @@ this.Fired = false;
 };
 Neuron.prototype._GetOuput = function() {
   return this.Output;
-}
+};
 Neuron.prototype.GetId = function() {
   return this.id;
-}
+};
 Neuron.prototype.Incomming = function() {
 
     if(this.Fired || this.isInput)
@@ -139,6 +139,9 @@ Neuron.prototype.Incomming = function() {
 var Synapse = function(inputNode, outputNode) {
     this.inputNode = inputNode;
     this.outputNode = outputNode;
+};
+Synapse.prototype.toLog = function() {
+  return {inputId: this.inputNode.getId(), outputId: this.outputNode.getId()};
 };
 
 Synapse.prototype.Output = function() {
