@@ -19,17 +19,17 @@
 <script src="NEAT/Tests.js"></script>
 <script src="Graph/Graph.js"></script>
 
+<link rel="stylesheet" href="Debug.css" />
 <style>
-
 .node {
-fill: #ccc;
-stroke: #fff;
-stroke-width: 2px;
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: 2px;
 }
 
 .link {
-stroke: #777;
-stroke-width: 2px;
+  stroke: #777;
+  stroke-width: 2px;
 }
 
 
@@ -38,9 +38,9 @@ stroke-width: 2px;
 <body>
 
 <div class="jumbotron">
-  <h1>Jumbotron heading</h1>
+  <h1>Debug Document</h1>
 
-  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p class="lead">Contains unit tests + visual examples</p>
 </div>
 
 <div class="container">
@@ -56,9 +56,10 @@ stroke-width: 2px;
 
 </div>
 
-<div class="Graph">
-
+<div class="container">
+<div class="Graph"></div>
 </div>
+
 
 <script>
 var suite = new testSuite("QTestResults");
@@ -68,5 +69,5 @@ var g = new Graph(500,500);
 g.Generate([]);
 
 </script>
-
+<script src="http://localhost:35729/livereload.js"></script>
 </body>

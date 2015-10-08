@@ -14,13 +14,12 @@ var testSuite = function (tableResultId){
     var self = this;
     /*Should Change to promote backwards compatibility*/
     QUnit.testDone((details) => self.AddResult(details));
-
 };
 
 
 testSuite.prototype.AddResult = function(result){
     //  console.log(this.tableId);
-      var row = $("<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>".format(result.name,Boolean(result.failed),result.runtime));
+      var row = $("<tr><td>{0}</td><td>{1}/{2}</td><td>{3}</td></tr>".format(result.name,result.passed,result.total,result.runtime));
 
      $("{0} > tbody".format('#' + this.tableId)).append(row);
 

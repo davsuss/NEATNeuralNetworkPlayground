@@ -15,22 +15,26 @@ NeuralNetwork.prototype.Generate = function(genome){
 };
 
 NeuralNetwork.prototype._GetInputs = function(){
-  return this.inputs;
+  return this.inputs.slice();
 };
 
 NeuralNetwork.prototype._GetOutputs = function() {
-  return this.outputs;
+  return this.outputs.slice();
 };
 
-NeuralNetwork.prototype.Init = function(numOfInputs,numOfOutputs,callBack){
+NeuralNetwork.prototype._GetConnections = function() {
+  return this.connections.slice();
+}
 
+NeuralNetwork.prototype.Init = function(numOfInputs,numOfOutputs,callBack){
+var i = 0;
   for(i = 0 ;i  < numOfInputs; i++)
   {
-      this.inputs.push(new Neuron([], true));
+      this.inputs.push(i++,new Neuron([], true));
   }
   for(i = 0 ;i  < numOfOutputs; i++)
   {
-      this.outputs.push(new Neuron([], false));
+      this.outputs.push(i++,new Neuron([], false));
   }
   this.callBack = callBack;
   this.OnUpdate();
@@ -38,14 +42,24 @@ NeuralNetwork.prototype.Init = function(numOfInputs,numOfOutputs,callBack){
 
 NeuralNetwork.prototype.Fire = function(inputs){
 
+var results = []
+  this.Reset();
   this.inputs.forEach(function(element,index,array)
   {
-  tempOutput += element.Output();
+      element.setOutput(inputs[index])
+  });
+
+  this.outputs.forEach(function(element,index,array){
+      results.append(element.Incomming());
   });
 
 this.OnUpdate();
 
 };
+
+NeuralNetwork.prototype.GetOutputs = function() {
+
+}
 
 NeuralNetwork.prototype.Reset = function(){
   this.inputs.forEach(function(element,index,array){
@@ -62,23 +76,25 @@ NeuralNetwork.prototype.Reset = function(){
 NeuralNetwork.prototype.OnUpdate = function(){
   var Nodes = [];
   var Connections = [];
-
   this.inputs.forEach(function(element,index,array){
-    Nodes.push({id: 0, output: 1, type:"Input"});
+    Nodes.push({id: element.getId(), output:element._GetOutput(), type:"Input"});
   });
   this.hiddens.forEach(function(element,index,array){
-    Nodes.push({id: 0, output: 1, type:"Hidden"});
+    Nodes.push({id: element.getId(), output:element._GetOutput(), type:"Hidden"});
   });
   this.outputs.forEach(function(element,index,array){
-    Nodes.push({id: 0, output: 1, type:"Output"});
+    Nodes.push({id: element.getId(), output:element._GetOutput(), type:"Output"});
   });
+
+  //TODO Add Connections for Update
 
   this.callBack({NetworkNodes: Nodes, NetworkConnections: Connections});
 
 };
 
 /***********************************************/
-var Neuron = function(inputCons, isInput) {
+var Neuron = function(id,inputCons, isInput) {
+this.id = id;
 this.Fired = false;
 this.Output = 0;
 this.inputs = inputCons;
@@ -91,6 +107,12 @@ Neuron.prototype.setOutput = function(output){
 Neuron.prototype.Reset = function(){
 this.Fired = false;
 };
+Neuron.prototype._GetOuput = function() {
+  return this.Output;
+}
+Neuron.prototype.GetId = function() {
+  return this.id;
+}
 Neuron.prototype.Incomming = function() {
 
     if(this.Fired || this.isInput)
