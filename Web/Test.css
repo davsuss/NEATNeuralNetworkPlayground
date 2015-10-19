@@ -1,0 +1,44 @@
+.bar {
+  background-color: #222;
+  min-height: 50px;
+}
+rect {
+  fill: none;
+  pointer-events: all;
+}
+.cursor {
+  fill: none;
+  stroke: brown;
+  pointer-events: none;
+}
+
+.container{
+  border-width: thin;
+  padding-right: 0px;
+  padding-left: 0px;
+  border-style: solid;
+  min-height: 200px;
+  min-width: 150px;
+  margin-top: 50px;
+}
+
+.TestContainer{
+
+}
+
+.barTitle {
+  padding-left: 15px;
+  font-size: 21pt;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  color: #CCCCCC;
+}
+
+.barHeader {
+  padding-top: 5px;
+  padding-left: 15px;
+  background-color: #CCCCCC;
+  min-height: 25px;
+  min-width: inherit;
+}

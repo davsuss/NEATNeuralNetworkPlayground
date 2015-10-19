@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="appMain">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="Graph/Graph.js"></script>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <link rel="stylesheet" href="Test.css"/>
+    <script src="testApp.js"></script>
+    <header class="bar">
+      <div class ="barTitle">NEAT Test Page</div>
+    </header>
+  </head>
+
+  <body>
+    <div class="container" id="TestContainer">
+    </div>
+
+    <div class="container" id="GenomeTest" ng-app "GenomeApp">
+      <header class="barHeader" ng-controller ="GenomeController as Genome">
+          <button ng-click="Genome.init()">Reset Genome Model</button>
+          <button ng-click="Genome.addNode()">AddNode</button>
+          <label>Inputs:<input type="number" name="input"  ng-model="Genome.product.initInputs" min="0" max="10"></input></label>
+          <label>Outputs:<input type="number" name="input"  ng-model="Genome.product.initOutputs" min="0" max="10">{{Genome.initOutputs}}</input></label>
+      </header>
+      <svg class="DirectedGraph"></svg>
+    </div>
+
+  </body>
+
+<html>
